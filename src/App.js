@@ -1,25 +1,54 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState, useEffect, useCallback} from 'react';
+import { Route, Routes } from 'react-router-dom';
+import axios from 'axios';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+//pages
+import EditMenu from './pages/EditMenu';
+import Home from './pages/Home';
+
+//components
+import Header from './components/Header';
+import Footer from './components/Footer';
+
+
+const App = () => {
+
+  const menuUrl = 'http://localhost:8080/api/v1/allmenuitems'
+
+  const [menuItems, setMenuItems] = useState([]);
+
+ 
+
+ 
+  //inital fetch menu
+
+  const fetchMenuItems = useCallback(async () => {
+    const res = await axios.get(menuUrl); 
+    setMenuItems(res.data)
+  }, [])
+
+  //adding new menu items
+
+  const addNewItem = (data) => {
+    axios.post(menuUrl, data)
+  }
+
+  useEffect(() => {
+    fetchMenuItems().catch(console.error)
+  }, [fetchMenuItems])
+
+
+
+	return (
+		<div>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home/>}/> 
+        <Route path="/edit-menu" element={<EditMenu menuItems={menuItems} addNewItem={addNewItem} fetchMenuItems={fetchMenuItems}/>}/>
+      </Routes>
+      <Footer/>
+		</div>
+	);
+};
 
 export default App;
