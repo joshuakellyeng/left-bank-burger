@@ -33,6 +33,15 @@ const App = () => {
     axios.post(menuUrl, data)
   }
 
+  const deleteMenuItem = async (id) => {
+    try {
+      const res = await axios.delete(`http://localhost:8080/api/v1/allmenuitems/${id}`)
+      fetchMenuItems();
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   useEffect(() => {
     fetchMenuItems().catch(console.error)
   }, [fetchMenuItems])
@@ -44,7 +53,7 @@ const App = () => {
       <Header />
       <Routes>
         <Route path="/" element={<Home/>}/> 
-        <Route path="/edit-menu" element={<EditMenu menuItems={menuItems} addNewItem={addNewItem} fetchMenuItems={fetchMenuItems}/>}/>
+        <Route path="/edit-menu" element={<EditMenu menuItems={menuItems} addNewItem={addNewItem} fetchMenuItems={fetchMenuItems} deleteMenuItem={deleteMenuItem}/>}/>
       </Routes>
       <Footer/>
 		</div>

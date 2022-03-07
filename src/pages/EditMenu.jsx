@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 
-const EditMenu = ({ menuItems, addNewItem, fetchMenuItems }) => {
+const EditMenu = ({ menuItems, addNewItem, fetchMenuItems, deleteMenuItem }) => {
 	const {
 		register,
 		handleSubmit,
@@ -28,7 +28,7 @@ const EditMenu = ({ menuItems, addNewItem, fetchMenuItems }) => {
 	}
 
 	return (
-		<div>
+		<div className='m-2'>
 			{/* MENU ITEM FORM */}
 			<div>
 				<form
@@ -107,7 +107,7 @@ const EditMenu = ({ menuItems, addNewItem, fetchMenuItems }) => {
 											<button className="m-1 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
 												Edit
 											</button>
-											<button className="m-1 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+											<button onClick={()=> deleteMenuItem(item.id)} className="m-1 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
 												Delete
 											</button>
 										</td>
