@@ -45,19 +45,18 @@ tr:nth-child(even) {
 	font-style: normal;
 }
 
-.main-font {
+.shadow-font{
 	text-shadow: 2px 2px 0px #cecece;
 }
 
 .second-font {
-	color: #fb0001;
+	color: #C81307;
 }
 
 .burg {
-	color: #fb0001;
-	border-top: solid 2px;
-	border-bottom: solid 2px;
-	text-shadow: 2px 2px 0px #cecece;
+	color: #C81307;
+	border-top: solid 2px #C81307;
+	border-bottom: solid 2px #C81307;
 }
 
 .brush-font {
@@ -96,3 +95,25 @@ tr:nth-child(even) {
 	position: relative;
 	min-height: 100vh;
 }
+
+.btn{
+	border: 2px solid lightgrey;
+	border-radius: 20px;
+	padding: 0.5rem 1.5rem;
+}
+
+.badge {
+	-webkit-text-stroke:1px white;
+}
+
+/* Navbar CSS */
+
+
+
+@media (min-width:70rem) {
+	.menu-cat:nth-of-type(2n){
+		border-left: 2px solid black;
+	}
+}
+
+
