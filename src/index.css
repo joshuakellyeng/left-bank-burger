@@ -19,19 +19,80 @@
 	font-weight: 400;
 	font-style: italic;
 }
-
+/* TABLE STYLE */
 table {
 	font-family: arial, sans-serif;
 	border-collapse: collapse;
 	width: 100%;
-  }
-  
-  td, th {
+}
+
+td,
+th {
 	border: 1px solid #dddddd;
 	text-align: left;
 	padding: 8px;
-  }
-  
-  tr:nth-child(even) {
+}
+
+tr:nth-child(even) {
 	background-color: #dddddd;
-  }
+}
+
+/* MENU STYLE */
+
+.title-font {
+	font-family: oswald, sans-serif;
+	font-weight: 600;
+	font-style: normal;
+}
+
+.main-font {
+	text-shadow: 2px 2px 0px #cecece;
+}
+
+.second-font {
+	color: #fb0001;
+}
+
+.burg {
+	color: #fb0001;
+	border-top: solid 2px;
+	border-bottom: solid 2px;
+	text-shadow: 2px 2px 0px #cecece;
+}
+
+.brush-font {
+	font-family: brush-script-std, sans-serif;
+	font-weight: 400;
+	font-style: normal;
+}
+
+.text-font {
+	font-family: alegreya-sc, serif;
+	font-weight: 400;
+	font-style: italic;
+}
+
+.sub-title {
+	font-family: oswald, sans-serif;
+	font-weight: 600;
+	font-style: normal;
+}
+
+.menuItem:nth-last-of-type(1) {
+	border: goldenrod 2px dotted;
+}
+
+.footer {
+	/* keep a footer at the bottom indefinitely */
+	position: absolute;
+	bottom: 0;
+	padding-top: 2.5;
+	width: 100%;
+	text-align: center;
+	color: #fff;
+}
+
+.app-container {
+	position: relative;
+	min-height: 100vh;
+}

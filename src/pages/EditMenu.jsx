@@ -33,10 +33,11 @@ const EditMenu = ({
 	};
 
 	return (
-		<div className="m-2">
+		<div className="p-20">
+			<h1 className='text-5xl title-font text-center pb-5'>Add A New Item To The Menu</h1>
 			{/* MENU ITEM FORM */}
-			<div className="border-solid border-4">
-				<form className="" onSubmit={handleSubmit(onSubmit)}>
+			<div className="border-solid border-4 p-1">
+				<form onSubmit={handleSubmit(onSubmit)}>
 					{/* form container */}
 					<div className='flex flex-col'>
 						{/* select options container */}
@@ -112,14 +113,14 @@ const EditMenu = ({
 						</h1>
 						<table className="table-fixed capitalize">
 							<thead>
-								<tr className="text-font text-center">
+								<tr className="text-center">
 									<th>Item Name</th>
 									<th>Item Contents</th>
 									<th>Item Price</th>
 									<th>Actions</th>
 								</tr>
 							</thead>
-							<tbody className="text-font">
+							<tbody className="">
 								{itemcat.menuItemList.map((item) => (
 									<tr key={item.id}>
 										<td>{item.itemname}</td>

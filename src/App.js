@@ -5,6 +5,7 @@ import axios from 'axios';
 //pages
 import EditMenu from './pages/EditMenu';
 import Home from './pages/Home';
+import Menu from './pages/Menu';
 
 //components
 import Header from './components/Header';
@@ -49,11 +50,12 @@ const App = () => {
 
 
 	return (
-		<div>
+		<div className='app-container'>
       <Header />
       <Routes>
         <Route path="/" element={<Home/>}/> 
         <Route path="/edit-menu" element={<EditMenu menuItems={menuItems} addNewItem={addNewItem} fetchMenuItems={fetchMenuItems} deleteMenuItem={deleteMenuItem}/>}/>
+        <Route path="/menu" element={<Menu menuItems={menuItems} />}/>
       </Routes>
       <Footer/>
 		</div>
