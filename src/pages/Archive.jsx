@@ -77,7 +77,7 @@ const Archive = () => {
 
                     <div className='w-10/12 m-auto'>
 						<h1 className="text-2xl uppercase title-font text-center py-5">
-							Contacts
+							Applicants
 						</h1>
 						<table className="table-auto capitalize">
 							<thead>
