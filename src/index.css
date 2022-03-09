@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+*{
+	box-sizing: border-box;
+}
+
 .title-font {
 	font-family: oswald, sans-serif;
 	font-weight: 900;
@@ -54,7 +58,6 @@ tr:nth-child(even) {
 }
 
 .burg {
-	color: #C81307;
 	border-top: solid 2px #C81307;
 	border-bottom: solid 2px #C81307;
 }
@@ -104,6 +107,10 @@ tr:nth-child(even) {
 
 .badge {
 	-webkit-text-stroke:1px white;
+}
+
+.background-image{
+	background-image: url('https://img1.wsimg.com/isteam/ip/71928a24-1f3a-4d61-897e-2280170b4338/header%20pic.jpg/:/cr=t:0%25,l:0%25,w:100%25,h:100%25/rs=w:1280,h:854');
 }
 
 /* Navbar CSS */

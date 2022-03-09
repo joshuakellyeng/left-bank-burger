@@ -7,11 +7,12 @@ const Footer = () => {
 				COPYRIGHT © 2021 LEFT BANK BURGER - ALL RIGHTS RESERVED.
 			</p>
 			<div>
-				<Link className='mx-2' to="/edit-menu">
+				<Link className='mx-2' to="/apply">APPLY</Link>
+				<Link className="mx-2" to="/edit-menu">
 					<i className="fa-solid fa-pen-to-square"></i>
 				</Link>
-				<Link className='mx-2' to="/archive">
-					<i className="fa-solid fa-pen-to-square"></i>
+				<Link className="mx-2" to="/archive">
+					<i className="fa-solid fa-user"></i>
 				</Link>
 			</div>
 		</div>

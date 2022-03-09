@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Header = () => {
 	const [navbarOpen, setNavbarOpen] = useState(false);
 	return (
-		<nav className="flex flex-wrap items-center justify-between px-2 py-3 bg-blueGray-500 mb-3 title-font bg-black text-slate-50 sticky top-0 text-2xl">
+		<nav className="flex flex-wrap items-center justify-between px-2 py-3 bg-blueGray-500  title-font bg-black text-slate-50 sticky top-0 text-2xl z-50">
 		<div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
 			<div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
 				<Link className="" to="/">
@@ -54,9 +54,9 @@ const Header = () => {
 					</li>
 					<li className="nav-item">
 						<a
-							className="px-3 py-2 flex items-center uppercase font-bold leading-snug text-white hover:opacity-75"
+							className="px-3 pt-3 flex items-center uppercase font-bold leading-snug text-white hover:opacity-75"
 							href="https://www.instagram.com/lb_burgerbar/"
-						>	INSTAGRAM
+						>
 							<i className="mx-2 fab fa-instagram text-lg leading-lg text-white opacity-75"></i>
 						</a>
 					</li>

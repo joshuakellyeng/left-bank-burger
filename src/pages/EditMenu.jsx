@@ -1,16 +1,14 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-const EditMenu = ({
-	menuItems,
-	addNewItem,
-	fetchMenuItems,
-	deleteMenuItem,
-}) => {
+const EditMenu = ({ menuItems, fetchMenuItems }) => {
+	// react hook form
 	const {
 		register,
 		handleSubmit,
 		reset,
+		setValue,
 		formState: { errors },
 	} = useForm({
 		defaultValues: {
@@ -21,33 +19,97 @@ const EditMenu = ({
 		},
 	});
 
-	const onSubmit = (data) => {
-		addNewItem(data);
-		reset({
-			itemname: '',
-			itemdesc: '',
-			itemprice: Number(),
-			menuItemCategoryId: Number(),
-		});
-		fetchMenuItems();
+	const [editForm, setEditForm] = useState(false);
+	const [menuItemToEdit, setMenuItemToEdit] = useState({});
+
+	const handleEditMenuItem = (item) => {
+		setEditForm(true);
+		setValue('menuItemCategoryId', item.menuItemCategoryId);
+		setValue('itemname', item.itemname);
+		setValue('itemdesc', item.itemdesc);
+		setValue('itemprice', item.itemprice);
+		setMenuItemToEdit(item);
+		console.log(item);
+	};
+
+	//on submition values will clear from input fields
+	const onSubmit = async (data) => {
+		setMenuItemToEdit(data);
+		const newMenuItem = {
+			menuItemCategoryId: data.menuItemCategoryId,
+			itemname: data.itemname,
+			itemdesc: data.itemdesc,
+			itemprice: data.itemprice,
+		};
+		try {
+			if (editForm) {
+				const res = await axios.put(
+					`http://localhost:8080/api/v1/allmenuitems/${menuItemToEdit.id}`,
+					newMenuItem
+				);
+				if (res.status === 200) {
+					reset({
+						itemname: '',
+						itemdesc: '',
+						itemprice: Number(),
+						menuItemCategoryId: Number(),
+					});
+				} else {
+					console.log(newMenuItem);
+				}
+			} else {
+				const res = await axios.post(
+					`http://localhost:8080/api/v1/allmenuitems`,
+					newMenuItem
+				);
+				if (res.status === 200) {
+					reset({
+						itemname: '',
+						itemdesc: '',
+						itemprice: Number(),
+						menuItemCategoryId: Number(),
+					});
+				} else {
+					console.log(newMenuItem);
+				}
+			}
+
+			fetchMenuItems();
+		} catch (error) {
+			console.error(error);
+		}
+	};
+
+	//deleting menu item
+	const deleteMenuItem = async (id) => {
+		try {
+			const res = await axios.delete(
+				`http://localhost:8080/api/v1/allmenuitems/${id}`
+			);
+			fetchMenuItems();
+		} catch (error) {
+			console.error(error);
+		}
 	};
 
 	return (
 		<div className="p-20">
-			<h1 className='text-5xl title-font text-center pb-5'>Add A New Item To The Menu</h1>
+			<h1 className="text-5xl title-font text-center pb-5">
+				Add A New Item To The Menu
+			</h1>
 			{/* MENU ITEM FORM */}
-			<div className="border-solid border-4 p-1">
+			<div className="border-solid border-4 p-1" id="menu-item">
 				<form onSubmit={handleSubmit(onSubmit)}>
 					{/* form container */}
-					<div className='flex flex-col'>
+					<div className="flex flex-col">
 						{/* select options container */}
-						<div className=''>
-							<label className="w-100" htmlFor="menuItemCategoryId">
+						<div className="">
+							<label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="menuItemCategoryId">
 								Select A Category:{' '}
 							</label>
 							<select
 								placeholder="Select A Category"
-								className="capitalize font-bold text-xl mb-2"
+								className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500 capitalize"
 								{...register('menuItemCategoryId', { required: true })}
 							>
 								<option value="1">appetizers</option>
@@ -66,36 +128,36 @@ const EditMenu = ({
 						</div>
 						{/* input options container*/}
 						<div>
-							<label className="" htmlFor="itemname">
+							<label className=" my-2 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="itemname">
 								Name:{' '}
 							</label>
 							<input
-								className="mx-1"
+								className="my-2 appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
 								type="text"
 								placeholder="What's it Called?"
 								{...register('itemname', { required: true, maxLength: 255 })}
 							/>
-							<label className="" htmlFor="itemdesc">
+							<label className=" my-2 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="itemdesc">
 								Contents:{' '}
 							</label>
 							<input
-								className="mx-1"
+								className="my-2 appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
 								type="text"
 								placeholder="What's in it?"
-								{...register('itemdesc', { required: true, maxLength: 255 })}
+								{...register('itemdesc', { required: false, maxLength: 255 })}
 							/>
-							<label className="" htmlFor="itemprice">
+							<label className="my-2 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="itemprice">
 								Price:{' '}
 							</label>
 							<input
-								className="mx-1 w-20"
+								className="my-2 appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
 								type="number"
 								{...register('itemprice', { required: true })}
 							/>
 
 							<input
 								type="submit"
-								className="m-1 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+								className="my-2 w-full bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
 							/>
 						</div>
 					</div>
@@ -104,11 +166,8 @@ const EditMenu = ({
 			{/* MENU TABLES */}
 			<div>
 				{menuItems.map((itemcat) => (
-					<div>
-						<h1
-							className="text-2xl uppercase title-font text-center"
-							key={itemcat.itemcategory}
-						>
+					<div key={itemcat.itemcategory}>
+						<h1 className="text-2xl uppercase title-font text-center py-5">
 							{itemcat.itemcategory}
 						</h1>
 						<table className="table-fixed capitalize">
@@ -127,7 +186,11 @@ const EditMenu = ({
 										<td>{item.itemdesc}</td>
 										<td>$ {item.itemprice}</td>
 										<td>
-											<button className="m-1 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+											<button
+												href={'menu-item'}
+												onClick={() => handleEditMenuItem(item)}
+												className="m-1 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+											>
 												Edit
 											</button>
 											<button

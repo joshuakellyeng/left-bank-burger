@@ -3,7 +3,7 @@ import Map from '../components/Map';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 
-const Contact = () => {
+const Apply = () => {
 	const {
 		register,
 		handleSubmit,
@@ -12,25 +12,28 @@ const Contact = () => {
 	} = useForm({
 		defaultValues: {
 			name: '',
+            phone: '',
 			email: '',
 			message:'',
 		},
 	});
 	const onSubmit = async (data) => {
-		const newContact = {
+		const newApplicant = {
 			name: data.name,
+            phone: data.phone,
 			email: data.email,
 			message: data.message
 		}
 		try {
-			const res = await axios.post('http://localhost:8080/api/v1/allcontacts', newContact)
-			console.log(newContact)
+			const res = await axios.post('http://localhost:8080/api/v1/allapplicants', newApplicant)
+			console.log(newApplicant)
 			
 		} catch (error) {
 			console.error(error)
 		}
 		reset({
 			name: '',
+            phone: '',
 			email: '',
 			message: ''
 		})
@@ -40,8 +43,10 @@ const Contact = () => {
 
 	return (
 		<div className="w-full py-20">
-			<h1 className="title-font text-6xl text-center pb-5 mt-5 uppercase">Contact Us</h1>
-			<h1 className="title-font text-5xl text-center pb-5 mt-5">Drop us a line!
+			<h1 className="title-font text-6xl text-center pb-5 mt-5 uppercase">Apply Now!</h1>
+			<h1 className="title-font text-5xl text-center pb-5 mt-5">HIRING ALL POSITIONS
+			</h1>
+            <h1 className="title-font text-5xl text-center pb-5 mt-5">FULL TIME & PART TIME AVAILABLE
 			</h1>
 
 			<div className="w-10/12 m-auto mt-5">
@@ -58,6 +63,18 @@ const Contact = () => {
 							type="text"
 							placeholder="Name"
 							{...register('name', { required: true, maxLength: 255 })}
+						/>
+                        <label
+							className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+							htmlFor="phone"
+						>
+							Phone:{' '}
+						</label>
+						<input
+							className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-red-500"
+							type="text"
+							placeholder="Phone"
+							{...register('phone', { required: true, maxLength: 255 })}
 						/>
 						<label
 							className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
@@ -122,4 +139,4 @@ const Contact = () => {
 	);
 };
 
-export default Contact;
+export default Apply;
