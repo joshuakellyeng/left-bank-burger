@@ -98,7 +98,7 @@ const EditMenu = ({ menuItems, fetchMenuItems }) => {
 				Add A New Item To The Menu
 			</h1>
 			{/* MENU ITEM FORM */}
-			<div className="border-solid border-4 p-1" id="menu-item">
+			<div className="border-solid border-2 p-2 rounded-md" id="menu-item">
 				<form onSubmit={handleSubmit(onSubmit)}>
 					{/* form container */}
 					<div className="flex flex-col">
