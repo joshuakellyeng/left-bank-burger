@@ -15,7 +15,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 
 const App = () => {
-	const menuUrl = 'http://localhost:8080/api/v1/allmenuitems';
+	const menuUrl = 'https://lb-burgerbar.herokuapp.com/api/v1/allmenuitems';
 
 	const [menuItems, setMenuItems] = useState([]);
 

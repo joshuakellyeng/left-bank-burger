@@ -115,11 +115,18 @@ tr:nth-child(even) {
 
 /* Navbar CSS */
 
+.mod{
+	display: none;
+}
+
 
 
 @media (min-width:70rem) {
 	.menu-cat:nth-of-type(2n){
 		border-left: 2px solid black;
+	}
+	.mod{
+		display: block;
 	}
 }
 

@@ -44,9 +44,10 @@ const EditMenu = ({ menuItems, fetchMenuItems }) => {
 		try {
 			if (editForm) {
 				const res = await axios.put(
-					`http://localhost:8080/api/v1/allmenuitems/${menuItemToEdit.id}`,
+					`https://lb-burgerbar.herokuapp.com/api/v1/allmenuitems/${menuItemToEdit.id}`,
 					newMenuItem
 				);
+
 				if (res.status === 200) {
 					reset({
 						itemname: '',
@@ -59,7 +60,7 @@ const EditMenu = ({ menuItems, fetchMenuItems }) => {
 				}
 			} else {
 				const res = await axios.post(
-					`http://localhost:8080/api/v1/allmenuitems`,
+					`https://lb-burgerbar.herokuapp.com/api/v1/allmenuitems`,
 					newMenuItem
 				);
 				if (res.status === 200) {
@@ -84,7 +85,7 @@ const EditMenu = ({ menuItems, fetchMenuItems }) => {
 	const deleteMenuItem = async (id) => {
 		try {
 			const res = await axios.delete(
-				`http://localhost:8080/api/v1/allmenuitems/${id}`
+				`https://lb-burgerbar.herokuapp.com/api/v1/allmenuitems/${id}`
 			);
 			fetchMenuItems();
 		} catch (error) {
@@ -104,7 +105,10 @@ const EditMenu = ({ menuItems, fetchMenuItems }) => {
 					<div className="flex flex-col">
 						{/* select options container */}
 						<div className="">
-							<label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="menuItemCategoryId">
+							<label
+								className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+								htmlFor="menuItemCategoryId"
+							>
 								Select A Category:{' '}
 							</label>
 							<select
@@ -128,7 +132,10 @@ const EditMenu = ({ menuItems, fetchMenuItems }) => {
 						</div>
 						{/* input options container*/}
 						<div>
-							<label className=" my-2 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="itemname">
+							<label
+								className=" my-2 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+								htmlFor="itemname"
+							>
 								Name:{' '}
 							</label>
 							<input
@@ -137,7 +144,10 @@ const EditMenu = ({ menuItems, fetchMenuItems }) => {
 								placeholder="What's it Called?"
 								{...register('itemname', { required: true, maxLength: 255 })}
 							/>
-							<label className=" my-2 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="itemdesc">
+							<label
+								className=" my-2 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+								htmlFor="itemdesc"
+							>
 								Contents:{' '}
 							</label>
 							<input
@@ -146,7 +156,10 @@ const EditMenu = ({ menuItems, fetchMenuItems }) => {
 								placeholder="What's in it?"
 								{...register('itemdesc', { required: false, maxLength: 255 })}
 							/>
-							<label className="my-2 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="itemprice">
+							<label
+								className="my-2 block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+								htmlFor="itemprice"
+							>
 								Price:{' '}
 							</label>
 							<input

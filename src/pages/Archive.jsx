@@ -7,8 +7,8 @@ const Archive = () => {
 
 	const fetchArchive = async () => {
 		try {
-			const res = await axios.get('http://localhost:8080/api/v1/allcontacts');
-            const res2 = await axios.get('http://localhost:8080/api/v1/allapplicants')
+			const res = await axios.get('https://lb-burgerbar.herokuapp.com/api/v1/allcontacts');
+            const res2 = await axios.get('https://lb-burgerbar.herokuapp.com/api/v1/allapplicants')
 			setContacts(res.data);
             setApplicants(res2.data)
 		} catch (error) {
@@ -18,7 +18,7 @@ const Archive = () => {
 
     const deleteContact = async (id) => {
         try {
-            const res = await axios.delete(`http://localhost:8080/api/v1/allcontacts/${id}`)
+            const res = await axios.delete(`https://lb-burgerbar.herokuapp.com/api/v1/allcontacts/${id}`)
             fetchArchive()
         } catch (error) {
             console.error(error)
@@ -27,7 +27,7 @@ const Archive = () => {
 
     const deleteApplicant = async (id) => {
         try {
-            const res = await axios.delete(`http://localhost:8080/api/v1/allapplicants/${id}`)
+            const res = await axios.delete(`https://lb-burgerbar.herokuapp.com/api/v1/allapplicants/${id}`)
             fetchArchive()
         } catch (error) {
             console.error(error)
@@ -38,7 +38,6 @@ const Archive = () => {
 		fetchArchive();
 	}, []);
 
-    console.log(contacts, applicants)
 	return (
 		<div>
 			<div>

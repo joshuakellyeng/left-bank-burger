@@ -25,7 +25,7 @@ const Apply = () => {
 			message: data.message
 		}
 		try {
-			const res = await axios.post('http://localhost:8080/api/v1/allapplicants', newApplicant)
+			const res = await axios.post('https://lb-burgerbar.herokuapp.com/api/v1/allapplicants', newApplicant)
 			console.log(newApplicant)
 			
 		} catch (error) {
