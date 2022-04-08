@@ -3,9 +3,9 @@ import React from 'react';
 const Menu = ({ menuItems }) => {
 	return (
 		<div className="py-20">
-			<div className="text-center text-4xl flex flex-col items-center">
-				<h1 className="shadow-font title-font uppercase">Left Bank</h1>
-				<h1 className="second-font text-6xl brush-font capitalize">
+			<div className="text-center lg:text-4xl text-xl flex flex-col items-center">
+				<h1 className="shadow-font lg:text-4xl text-4xl title-font uppercase">Left Bank</h1>
+				<h1 className="second-font lg:text-6xl text-4xl brush-font capitalize">
 					Burger Bar
 				</h1>
 				<h1 className="text-font burg my-2 w-9/12">

@@ -8,7 +8,7 @@ const Header = () => {
 		<div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
 			<div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
 				<Link className="" to="/">
-					<div className="flex text-4xl">
+					<div className="flex lg:text-4xl">
 						<h1 className="">LEFT BANK</h1>
 						<h1 className="brush-font shadow-font px-2 second-font">
 							Burger Bar
