@@ -41,6 +41,7 @@ const EditMenu = ({ menuItems, fetchMenuItems }) => {
 			itemdesc: data.itemdesc,
 			itemprice: data.itemprice,
 		};
+		console.log(data)
 		try {
 			if (editForm) {
 				const res = await axios.put(
@@ -71,9 +72,8 @@ const EditMenu = ({ menuItems, fetchMenuItems }) => {
 						menuItemCategoryId: Number(),
 					});
 				} else {
-					console.log(newMenuItem);
-					console.log(menuItemToEdit)
 					console.log(data)
+					console.log(newMenuItem);
 				}
 			}
 
