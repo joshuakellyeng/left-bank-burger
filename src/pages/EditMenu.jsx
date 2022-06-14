@@ -62,9 +62,10 @@ const EditMenu = ({ menuItems, fetchMenuItems }) => {
 					console.log(newMenuItem);
 				}
 			} else {
+// POST REQUEST WONT GO THROUGH SO UNABLE TO CREATE NEW ITEMS BUT ALL OTHER CRUD OPERATIONS FUNCTION ============================================================================
 				const res = await axios.post(
 					`https://lb-burgerbar.herokuapp.com/api/v1/allmenuitems`,
-					menuItemToEdit
+					newMenuItem
 				);
 				if (res.status === 200) {
 					reset({
@@ -77,13 +78,12 @@ const EditMenu = ({ menuItems, fetchMenuItems }) => {
 					console.log(newMenuItem);
 				}
 			}
-
 			fetchMenuItems();
 		} catch (error) {
 			console.error(error);
 		}
 	};
-
+// END OF PROBLEM CODE BLOCK ======================================================================================================================================================
 	//deleting menu item
 	const deleteMenuItem = async (id) => {
 		try {
