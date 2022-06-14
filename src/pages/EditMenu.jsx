@@ -62,7 +62,7 @@ const EditMenu = ({ menuItems, fetchMenuItems }) => {
 			} else {
 				const res = await axios.post(
 					`https://lb-burgerbar.herokuapp.com/api/v1/allmenuitems`,
-					newMenuItem
+					data
 				);
 				if (res.status === 200) {
 					reset({
