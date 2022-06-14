@@ -72,6 +72,8 @@ const EditMenu = ({ menuItems, fetchMenuItems }) => {
 					});
 				} else {
 					console.log(newMenuItem);
+					console.log(menuItemToEdit)
+					console.log(data)
 				}
 			}
 
