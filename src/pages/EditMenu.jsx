@@ -41,7 +41,9 @@ const EditMenu = ({ menuItems, fetchMenuItems }) => {
 			itemdesc: data.itemdesc,
 			itemprice: data.itemprice,
 		};
-		console.log(data)
+		console.log(menuItemToEdit);
+		console.log(data);
+		console.log(newMenuItem)
 		try {
 			if (editForm) {
 				const res = await axios.put(
@@ -62,7 +64,7 @@ const EditMenu = ({ menuItems, fetchMenuItems }) => {
 			} else {
 				const res = await axios.post(
 					`https://lb-burgerbar.herokuapp.com/api/v1/allmenuitems`,
-					data
+					menuItemToEdit
 				);
 				if (res.status === 200) {
 					reset({
@@ -72,7 +74,6 @@ const EditMenu = ({ menuItems, fetchMenuItems }) => {
 						menuItemCategoryId: Number(),
 					});
 				} else {
-					console.log(data)
 					console.log(newMenuItem);
 				}
 			}
