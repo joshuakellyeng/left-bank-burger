@@ -3,7 +3,8 @@ import React from 'react';
 const Menu = ({ menuItems }) => {
 	return (
 		<div className="py-20">
-			<div className="text-center lg:text-4xl text-xl flex flex-col items-center">
+			<div className="w-full h-screen bg-center bg-no-repeat menu-image"></div>
+			{/* <div className="text-center lg:text-4xl text-xl flex flex-col items-center">
 				<h1 className="shadow-font lg:text-4xl text-4xl title-font uppercase">Left Bank</h1>
 				<h1 className="second-font lg:text-6xl text-4xl brush-font capitalize">
 					Burger Bar
@@ -32,7 +33,7 @@ const Menu = ({ menuItems }) => {
 						</div>
 					))}
 				</div>
-			</div>
+			</div> */}
 		</div>
 	);
 };
