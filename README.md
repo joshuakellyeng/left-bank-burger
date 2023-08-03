@@ -1,6 +1,6 @@
 # Left Bank Burger Bar
 
-A web application for local Jersey City restaurant that allows customers to order online and view relevant updates from the owner. This app allows the owner to accept job applications for open positions. Built with JavaScript, React, Tailwind CSS, and DaisyUI. [Live Link](https://lbburgerbar.netlify.app/)<br/>
+A web application for local Jersey City restaurant that allows customers to order food and view relevant updates from the owner. This app allows the owner to accept job applications for open positions. Built with JavaScript, React, Tailwind CSS, and DaisyUI. [Live Link](https://lbburgerbar.netlify.app/)<br/>
 <br/>
 
 ![leftbankburgerbar](https://raw.githubusercontent.com/joshuakellyeng/lbbb-frontend/main/src/assets/left-bank.png)<br/>
